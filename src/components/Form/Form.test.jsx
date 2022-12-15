@@ -23,15 +23,15 @@ describe("Form", () => {
   test("clicking the button renders empty username and password", async () => {
     user.setup();
     render(<Form />);
-    const usernameElement = screen.findByRole("textbox", {
+    const usernameElement = screen.getByRole("textbox", {
       name: "Name",
     });
-    const passwordElement = screen.findByLabelText("Password", {
+    const passwordElement = screen.getByLabelText("Password", {
       selector: "input",
     });
     const buttonElement = screen.getByRole("button", { name: "Send" });
     await user.click(buttonElement);
-    expect(usernameElement).toHaveValue("");
+    expect(usernameElement).toHaveValue("failed");
     expect(passwordElement).toHaveValue("");
   });
 });
